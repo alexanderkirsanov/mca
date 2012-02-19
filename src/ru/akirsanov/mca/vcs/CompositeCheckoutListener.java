@@ -1,6 +1,8 @@
 package ru.akirsanov.mca.vcs;
 
-import java.io.File;
+import ru.akirsanov.mca.vcs.listener.ListenersService;
+import ru.akirsanov.mca.vcs.listener.VcsCheckoutListener;
+import ru.akirsanov.mca.vcs.provider.CheckoutProvider;
 
 /**
  * User: akirsanov
@@ -14,13 +16,10 @@ public class CompositeCheckoutListener implements CheckoutProvider.Listener {
     }
 
     @Override
-    public void directoryCheckedOut(File directory, VcsKey vcs) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
     public void checkoutCompleted() {
-        //To change body of implemented methods use File | Settings | File Templates.
+        for (VcsCheckoutListener listener :ListenersService.getListeners()){
+            listener.processCheckedOutDirectory(project);
+        }
     }
 
     @Override
@@ -30,9 +29,8 @@ public class CompositeCheckoutListener implements CheckoutProvider.Listener {
 
         CompositeCheckoutListener that = (CompositeCheckoutListener) o;
 
-        if (project != null ? !project.equals(that.project) : that.project != null) return false;
+        return !(project != null ? !project.equals(that.project) : that.project != null);
 
-        return true;
     }
 
     @Override

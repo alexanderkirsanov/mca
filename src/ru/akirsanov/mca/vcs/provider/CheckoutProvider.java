@@ -1,4 +1,4 @@
-package ru.akirsanov.mca.vcs;
+package ru.akirsanov.mca.vcs.provider;
 
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -13,11 +13,11 @@ import java.io.File;
 public interface CheckoutProvider {
 
     void doCheckout(@NotNull final String project, @Nullable Listener listener);
+
     @NonNls
     String getVcsName();
 
     interface Listener {
-        void directoryCheckedOut(File directory, VcsKey vcs);
         void checkoutCompleted();
     }
 }

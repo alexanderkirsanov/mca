@@ -1,5 +1,7 @@
 package ru.akirsanov.mca.vcs;
 
+import ru.akirsanov.mca.vcs.provider.CheckoutProvider;
+
 /**
  * User: akirsanov
  * Date: 16.02.12 0:52

@@ -2,8 +2,7 @@ package ru.akirsanov.mca.vcs;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.File;
+import ru.akirsanov.mca.vcs.provider.CheckoutProvider;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

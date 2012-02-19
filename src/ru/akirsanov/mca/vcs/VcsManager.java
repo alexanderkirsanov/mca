@@ -1,5 +1,7 @@
 package ru.akirsanov.mca.vcs;
 
+import ru.akirsanov.mca.vcs.provider.CheckoutProvider;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,7 @@ public class VcsManager {
             manager =  new VcsManager(project);
             map.put(project, manager);
         }
+
         return manager;
     }
 
@@ -29,3 +32,4 @@ public class VcsManager {
         return new CompositeCheckoutListener(this.project);
     }
 }
+

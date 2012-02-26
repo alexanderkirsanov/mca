@@ -11,10 +11,10 @@ import java.util.Map;
  */
 public class VcsManager {
 
-    private final String project;
-    private static final Map<String,VcsManager> map = new HashMap<String, VcsManager>();
+    private final Project project;
+    private static final Map<Project,VcsManager> map = new HashMap<Project, VcsManager>();
 
-    public static VcsManager getInstance(String project) {
+    public static VcsManager getInstance(Project project) {
         VcsManager manager = map.get(project);
         if (manager == null){
             manager =  new VcsManager(project);
@@ -24,7 +24,7 @@ public class VcsManager {
         return manager;
     }
 
-    private VcsManager(String project) {
+    private VcsManager(Project project) {
         this.project = project;
     }
 

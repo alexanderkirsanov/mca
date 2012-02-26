@@ -1,5 +1,6 @@
 package ru.akirsanov.mca.vcs;
 
+import org.tmatesoft.svn.core.SVNException;
 import ru.akirsanov.mca.vcs.provider.CheckoutProvider;
 
 /**
@@ -10,10 +11,10 @@ public class CheckoutAction {
     private final CheckoutProvider provider;
 
     public CheckoutAction(final CheckoutProvider checkoutProvider) {
-        provider = checkoutProvider; 
+        provider = checkoutProvider;
     }
 
-    public void actionPerformed(String project) {
+    public void actionPerformed(Project project) throws SVNException {
         provider.doCheckout(project, VcsManager.getInstance(project).getCompositeCheckoutListener());
     }
 }

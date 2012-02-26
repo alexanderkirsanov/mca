@@ -2,13 +2,12 @@ package ru.akirsanov.mca.vcs;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.tmatesoft.svn.core.SVNException;
 import ru.akirsanov.mca.vcs.provider.CheckoutProvider;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.powermock.api.mockito.PowerMockito.mock;
-import static org.powermock.api.mockito.PowerMockito.verifyNew;
-import static org.powermock.api.mockito.PowerMockito.when;
 
 /**
  * User: akirsanov
@@ -18,18 +17,18 @@ import static org.powermock.api.mockito.PowerMockito.when;
 public class CheckoutActionTest {
     private CheckoutProvider checkoutProvider;
     private CheckoutAction checkoutAction;
-    private String project;
+    private Project project;
 
     @Before
-    public void prepare() {
+    public void setUp() {
         checkoutProvider = mock(CheckoutProvider.class);
         checkoutAction = new CheckoutAction(checkoutProvider);
-        project = "test";
+        project = new Project("test");
     }
 
     @Test
-    public void testActionPerformed() {
-        checkoutAction.actionPerformed("test");
+    public void testActionPerformed() throws SVNException {
+        checkoutAction.actionPerformed(project);
         verify(checkoutProvider, times(1)).doCheckout(project, VcsManager.getInstance(project).getCompositeCheckoutListener());
     }
 

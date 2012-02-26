@@ -9,15 +9,15 @@ import ru.akirsanov.mca.vcs.provider.CheckoutProvider;
  * Date: 16.02.12 1:05
  */
 public class CompositeCheckoutListener implements CheckoutProvider.Listener {
-    private final String project;
+    private final Project project;
 
-    public CompositeCheckoutListener(String project) {
+    public CompositeCheckoutListener(Project project) {
         this.project = project;
     }
 
     @Override
     public void checkoutCompleted() {
-        for (VcsCheckoutListener listener :ListenersService.getListeners()){
+        for (VcsCheckoutListener listener : ListenersService.getListeners()) {
             listener.processCheckedOutDirectory(project);
         }
     }

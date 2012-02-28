@@ -2,13 +2,13 @@
   <library name="org.powermock:powermock-api-mockito:1.4.10" type="repository">
     <properties maven-id="org.powermock:powermock-api-mockito:1.4.10" />
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/powermock-api-mockito-1.4.10.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/mockito-all-1.8.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/powermock-api-support-1.4.10.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/powermock-core-1.4.10.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/powermock-reflect-1.4.10.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/objenesis-1.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javassist-3.15.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/powermock-api-mockito-1.4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/mockito-all-1.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/powermock-api-support-1.4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/powermock-core-1.4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/powermock-reflect-1.4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/objenesis-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/javassist-3.15.0-GA.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

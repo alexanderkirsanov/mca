@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="vcsCheckout:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/vcsCheckout_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="vcsCheckout/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="vcsCheckout" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="org.powermock:powermock-api-mockito:1.4.10" />
+          <element id="library" level="project" name="idea-annotations" />
+          <element id="library" level="project" name="com.svnkit:svnkit:1.1.6" />
+          <element id="library" level="project" name="jersey" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

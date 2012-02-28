@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.tmatesoft.svn.core.SVNURL;
 import org.tmatesoft.svn.core.wc.SVNRevision;
 import org.tmatesoft.svn.core.wc.SVNUpdateClient;
-import ru.akirsanov.mca.vcs.ConfigurationProvider;
+import ru.akirsanov.mca.vcs.ConfigManager.ConfigurationProvider;
 import ru.akirsanov.mca.vcs.Project;
 
 import java.io.File;
@@ -54,15 +54,12 @@ public class SvnCheckoutProviderTest {
 
     @Test
     public void testDoCheckout() throws Exception {
-
-
         String url = "http://jmonkeyengine.googlecode.com/svn/trunk/";
         svnurl = SVNURL.parseURIDecoded(url);
         Project project = new Project(name);
         file = new File(ConfigurationProvider.getPath() + File.separator + project.getName());
         CheckoutProvider.Listener listener = mock(CheckoutProvider.Listener.class);
         SvnCheckoutProvider svnCheckoutProvider = new SvnCheckoutProvider(svnUpdateClient, svnurl, file);
-
         svnCheckoutProvider.doCheckout(project, listener);
         verify(listener, times(1)).checkoutCompleted();
         verify(svnUpdateClient, times(1)).doCheckout(svnurl, file, SVNRevision.HEAD, SVNRevision.HEAD, true);

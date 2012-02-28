@@ -1,4 +1,4 @@
-package ru.akirsanov.mca.vcs;
+package ru.akirsanov.mca.vcs.ConfigManager;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -84,5 +84,11 @@ public class ConfigurationProvider {
         return standard.getParent() + File.separator + standard.getName() + "_IDEA";
     }
 
+    public void clear() {
+        projectConfiguration.clear();
+        projectOptions.clear();
+        svnRevisionsCollection.clear();
+        svnUrlsCollection.clear();
+    }
 
 }

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="idea-annotations">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/annotations.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/annotations.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

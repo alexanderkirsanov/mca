@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.tmatesoft.svn.core.internal.wc.DefaultSVNAuthenticationManager;
 import org.tmatesoft.svn.core.wc.ISVNOptions;
 import org.tmatesoft.svn.core.wc.SVNWCUtil;
+import ru.akirsanov.mca.vcs.ConfigManager.ConfigurationProvider;
 
 import java.io.File;
 

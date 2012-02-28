@@ -15,6 +15,6 @@ public class CheckoutAction {
     }
 
     public void actionPerformed(Project project) throws SVNException {
-        provider.doCheckout(project, VcsManager.getInstance(project).getCompositeCheckoutListener());
+        provider.doCheckout(VcsManager.getInstance(project).getCompositeCheckoutListener());
     }
 }

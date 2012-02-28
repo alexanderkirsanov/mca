@@ -17,11 +17,11 @@ import java.util.Map;
  * Date: 24.02.12 0:51
  */
 public class ConfigurationProvider {
-    private Map<String, ISVNAuthenticationManager> projectConfiguration = new HashMap<String, ISVNAuthenticationManager>();
-    private Map<String, ISVNOptions> projectOptions = new HashMap<String, ISVNOptions>();
+    private final Map<String, ISVNAuthenticationManager> projectConfiguration = new HashMap<String, ISVNAuthenticationManager>();
+    private final Map<String, ISVNOptions> projectOptions = new HashMap<String, ISVNOptions>();
     private static ConfigurationProvider configurationProvider;
-    private Map<String, SVNURL> svnUrlsCollection = new HashMap<String, SVNURL>();
-    private Map<String, SVNRevision> svnRevisionsCollection = new HashMap<String, SVNRevision>();
+    private final Map<String, SVNURL> svnUrlsCollection = new HashMap<String, SVNURL>();
+    private final Map<String, SVNRevision> svnRevisionsCollection = new HashMap<String, SVNRevision>();
 
     public static ConfigurationProvider getInstance() {
         if (configurationProvider == null) {

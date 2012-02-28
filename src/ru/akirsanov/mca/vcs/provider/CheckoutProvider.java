@@ -1,10 +1,8 @@
 package ru.akirsanov.mca.vcs.provider;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.tmatesoft.svn.core.SVNException;
-import ru.akirsanov.mca.vcs.Project;
 
 /**
  * User: akirsanov
@@ -12,7 +10,7 @@ import ru.akirsanov.mca.vcs.Project;
  */
 public interface CheckoutProvider {
 
-    void doCheckout(@NotNull final Project project, @Nullable Listener listener) throws SVNException;
+    void doCheckout(@Nullable Listener listener) throws SVNException;
 
     @NonNls
     String getVcsName();

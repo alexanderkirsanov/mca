@@ -60,7 +60,7 @@ public class SvnCheckoutProviderTest {
         file = new File(ConfigurationProvider.getPath() + File.separator + project.getName());
         CheckoutProvider.Listener listener = mock(CheckoutProvider.Listener.class);
         SvnCheckoutProvider svnCheckoutProvider = new SvnCheckoutProvider(svnUpdateClient, svnurl, file);
-        svnCheckoutProvider.doCheckout(project, listener);
+        svnCheckoutProvider.doCheckout(listener);
         verify(listener, times(1)).checkoutCompleted();
         verify(svnUpdateClient, times(1)).doCheckout(svnurl, file, SVNRevision.HEAD, SVNRevision.HEAD, true);
 

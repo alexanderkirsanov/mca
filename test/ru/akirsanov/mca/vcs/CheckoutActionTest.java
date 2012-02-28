@@ -29,7 +29,7 @@ public class CheckoutActionTest {
     @Test
     public void testActionPerformed() throws SVNException {
         checkoutAction.actionPerformed(project);
-        verify(checkoutProvider, times(1)).doCheckout(project, VcsManager.getInstance(project).getCompositeCheckoutListener());
+        verify(checkoutProvider, times(1)).doCheckout(VcsManager.getInstance(project).getCompositeCheckoutListener());
     }
 
 

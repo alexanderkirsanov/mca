@@ -1,5 +1,6 @@
 package ru.akirsanov.mca.vcs.listener;
 
+import org.jetbrains.annotations.Nullable;
 import ru.akirsanov.mca.vcs.Project;
 
 /**
@@ -7,5 +8,8 @@ import ru.akirsanov.mca.vcs.Project;
  * Date: 19.02.12 16:10
  */
 public interface VcsCheckoutListener {
-    boolean processCheckedOutDirectory(final Project project);
+    void processCheckedOutDirectory(final Project project);
+
+    @Nullable
+    String getState(final Project project);
 }

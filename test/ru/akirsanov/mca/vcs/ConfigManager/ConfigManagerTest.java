@@ -44,7 +44,7 @@ public class ConfigManagerTest {
     public void testGetUrl() throws Exception {
         ConfigManager configManager = new ConfigManager();
         SVNURL url = SVNURL.parseURIDecoded("http://jmonkeyengine.googlecode.com/svn/trunk/");
-        ConfigurationProvider.getInstance().registerSvnUrl(project, url);
+        ConfigurationProvider.getInstance().registerVcsUrl(project, url);
         assertNotNull(configManager.createUrl(project));
     }
 

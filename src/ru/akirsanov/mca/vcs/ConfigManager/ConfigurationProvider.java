@@ -57,7 +57,7 @@ public class ConfigurationProvider {
         return svnOptions;
     }
 
-    public void registerSvnUrl(String project, SVNURL svnUrl) {
+    public void registerVcsUrl(String project, SVNURL svnUrl) {
         svnUrlsCollection.put(project, svnUrl);
     }
 
@@ -80,6 +80,7 @@ public class ConfigurationProvider {
         final File standard = SVNWCUtil.getDefaultConfigurationDirectory();
         if (System.getProperty("os.name").startsWith("windows")) {
             return standard.getAbsolutePath();
+
         }
         return standard.getParent() + File.separator + standard.getName() + "_IDEA";
     }

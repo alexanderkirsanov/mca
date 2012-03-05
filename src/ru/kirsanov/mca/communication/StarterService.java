@@ -1,12 +1,12 @@
 package ru.kirsanov.mca.communication;
 
 import org.tmatesoft.svn.core.SVNException;
-import ru.akirsanov.mca.vcs.CheckoutAction;
-import ru.akirsanov.mca.vcs.Project;
-import ru.akirsanov.mca.vcs.listener.CheckoutListener;
-import ru.akirsanov.mca.vcs.listener.VcsCheckoutListener;
-import ru.akirsanov.mca.vcs.provider.CheckoutProvider;
-import ru.akirsanov.mca.vcs.provider.CheckoutProviderFactory;
+import ru.kirsanov.mca.vcs.CheckoutAction;
+import ru.kirsanov.mca.vcs.Project;
+import ru.kirsanov.mca.vcs.listener.CheckoutListener;
+import ru.kirsanov.mca.vcs.listener.VcsCheckoutListener;
+import ru.kirsanov.mca.vcs.provider.CheckoutProvider;
+import ru.kirsanov.mca.vcs.provider.CheckoutProviderFactory;
 import ru.kirsanov.mca.communication.entity.CheckoutActionInfo;
 import ru.kirsanov.mca.communication.entity.RepositoryInfo;
 
@@ -35,7 +35,7 @@ public class StarterService {
             Project project = new Project(info.projectName);
             checkoutAction.actionPerformed(project);
         } catch (SVNException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 

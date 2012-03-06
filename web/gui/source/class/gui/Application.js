@@ -59,6 +59,7 @@ qx.Class.define("gui.Application",
 
                 repositoryManager.open();
 
+
             }
         }
     });

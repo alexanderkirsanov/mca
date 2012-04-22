@@ -53,12 +53,16 @@ qx.Class.define("gui.Application",
                  Below is your actual application code...
                  -------------------------------------------------------------------------
                  */
+//
+//                var repositoryManager = new gui.RepositoryManager();
+//                //repositoryManager.setLayout(new qx.ui.layout.Basic());
+//
+//                repositoryManager.open();
 
-                var repositoryManager = new gui.RepositoryManager();
+                var repositoryManager = new gui.RegistrationForm();
                 //repositoryManager.setLayout(new qx.ui.layout.Basic());
 
                 repositoryManager.open();
-
 
             }
         }

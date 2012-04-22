@@ -1,6 +1,7 @@
 package ru.kirsanov.mca.metrics.loc;
 
 import org.junit.Test;
+
 import ru.kirsanov.mca.metrics.general.FileList;
 import ru.kirsanov.mca.metrics.general.ListFiles;
 import ru.kirsanov.mca.vcs.ConfigManager.ConfigurationProvider;
@@ -27,5 +28,4 @@ public class LineOfCountMetricsTest {
         LineOfCountMetrics lineOfCountMetrics = new LineOfCountMetrics(fileList);
         assertEquals(285436, lineOfCountMetrics.calculate());
     }
-
 }

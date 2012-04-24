@@ -46,6 +46,14 @@ public class MetricDAO extends DAO {
         selectRecord.setInt(1, id);
         return this.fillRecord(selectRecord);
     }
+
+    public List<MetricEntity> getRecords(String name) throws SQLException{
+           PreparedStatement selectRecord = connection
+                .prepareStatement("SELECT * FROM metric where name=?");
+        selectRecord.setString(1, name);
+        return this.fillRecord(selectRecord);
+    }
+
     private List<MetricEntity> fillRecord(PreparedStatement statement)
             throws SQLException {
         connection.setAutoCommit(false);

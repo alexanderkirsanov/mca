@@ -8,6 +8,13 @@ public class MetricEntity {
     private int id;
     private String name;
 
+    public MetricEntity(String name) {
+        this.name = name;
+    }
+
+    public MetricEntity() {
+    }
+
     public int getId() {
         return id;
     }

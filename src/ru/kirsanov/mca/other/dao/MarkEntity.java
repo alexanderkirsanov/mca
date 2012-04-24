@@ -12,6 +12,17 @@ public class MarkEntity {
     private int expertId;
     private int id;
 
+    public MarkEntity() {
+    }
+
+    public MarkEntity(double excelentMark, double goodMark, double badMark, int metricId, int expertId) {
+        this.excelentMark = excelentMark;
+        this.goodMark = goodMark;
+        this.badMark = badMark;
+        this.metricId = metricId;
+        this.expertId = expertId;
+    }
+
     public double getExcelentMark() {
         return excelentMark;
     }

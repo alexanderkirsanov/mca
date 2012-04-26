@@ -37,7 +37,7 @@ public class MarkDAOTest {
             statement
                     .executeUpdate("CREATE TABLE IF NOT EXISTS marks (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
                             + "excelent DOUBLE, good DOUBLE, bad DOUBLE,"
-                            + "expertId INT, metricID INT);");
+                            + "expertId INT, metricID INT, weight DOUBLE);");
         } finally {
             statement.close();
         }
@@ -48,6 +48,7 @@ public class MarkDAOTest {
         mark.setExcelentMark(3);
         mark.setMetricId(1);
         mark.setExpertId(1);
+        mark.setWeight(1d);
     }
 
 
@@ -79,7 +80,7 @@ public class MarkDAOTest {
             statement.executeUpdate("DROP TABLE marks;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS marks (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
                     + "excelent DOUBLE, good DOUBLE, bad DOUBLE,"
-                    + "expertId INT, metricID INT);");
+                    + "expertId INT, metricID INT, weight DOUBLE);");
         } finally {
             statement.close();
         }

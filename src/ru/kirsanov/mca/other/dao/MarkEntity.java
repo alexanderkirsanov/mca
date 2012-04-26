@@ -11,11 +11,12 @@ public class MarkEntity {
     private int metricId;
     private int expertId;
     private int id;
+    private double weight;
 
     public MarkEntity() {
     }
 
-    public MarkEntity(double excelentMark, double goodMark, double badMark, int metricId, int expertId) {
+    public MarkEntity(double excelentMark, double goodMark, double badMark, int metricId, int expertId, double weight) {
         this.excelentMark = excelentMark;
         this.goodMark = goodMark;
         this.badMark = badMark;
@@ -71,6 +72,14 @@ public class MarkEntity {
         this.id = id;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,4 +110,6 @@ public class MarkEntity {
         result = 31 * result + expertId;
         return result;
     }
+
+
 }

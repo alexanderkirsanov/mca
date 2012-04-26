@@ -29,12 +29,12 @@ public class MetricsMarkRangeTest {
         MetricEntity normMetricEntity = metricDAO.getRecords("NORM").get(0);
         MetricEntity nrmMetricEntity = metricDAO.getRecords("NRM").get(0);
         markDAO = new MarkDAO();
-        MarkEntity markEntity = new MarkEntity(3d,2d,1d,normMetricEntity.getId(),1);
-        MarkEntity markEntity2 = new MarkEntity(4d,3d,1d,normMetricEntity.getId(),2);
-        MarkEntity markEntity3 = new MarkEntity(5d,3d,1d,normMetricEntity.getId(),3);
-        MarkEntity nmarkEntity = new MarkEntity(12d,6d,1d,nrmMetricEntity.getId(),1);
-        MarkEntity nmarkEntity2 = new MarkEntity(12d,5d,1d,nrmMetricEntity.getId(),2);
-        MarkEntity nmarkEntity3 = new MarkEntity(1d,3d,1d,nrmMetricEntity.getId(),3);
+        MarkEntity markEntity = new MarkEntity(3d,2d,1d, normMetricEntity.getId(),1, 1d);
+        MarkEntity markEntity2 = new MarkEntity(4d,3d,1d,normMetricEntity.getId(),2, 0.5d);
+        MarkEntity markEntity3 = new MarkEntity(5d,3d,1d,normMetricEntity.getId(),3, 0.8d);
+        MarkEntity nmarkEntity = new MarkEntity(12d,6d,1d,nrmMetricEntity.getId(),1, 0.7d);
+        MarkEntity nmarkEntity2 = new MarkEntity(12d,5d,1d,nrmMetricEntity.getId(),2, 0.5d);
+        MarkEntity nmarkEntity3 = new MarkEntity(1d,3d,1d,nrmMetricEntity.getId(),3, 0.9d);
         markDAO.insert(markEntity);
         markDAO.insert(markEntity2);
         markDAO.insert(markEntity3);

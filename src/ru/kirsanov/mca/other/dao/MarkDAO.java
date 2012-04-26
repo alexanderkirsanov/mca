@@ -18,7 +18,7 @@ public class MarkDAO extends DAO {
             statement
                     .executeUpdate("CREATE TABLE IF NOT EXISTS marks (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
                             + "excelent DOUBLE, good DOUBLE, bad DOUBLE,"
-                            + "expertId INT, metricID INT);");
+                            + "expertId INT, metricID INT, weight DOUBLE);");
         } catch (Exception e) {
 
         }
@@ -26,13 +26,14 @@ public class MarkDAO extends DAO {
 
     public boolean insert(MarkEntity record) throws SQLException {
         PreparedStatement insertStatement = connection
-                .prepareStatement("INSERT INTO marks VALUES (NULL, ?,?,?,?,?);");
+                .prepareStatement("INSERT INTO marks VALUES (NULL, ?,?,?,?,?,?);");
         try {
             insertStatement.setDouble(1, record.getExcelentMark());
             insertStatement.setDouble(2, record.getGoodMark());
             insertStatement.setDouble(3, record.getBadMark());
             insertStatement.setInt(4, record.getExpertId());
             insertStatement.setInt(5, record.getMetricId());
+            insertStatement.setDouble(6, record.getWeight());
             insertStatement.addBatch();
             connection.setAutoCommit(false);
             int[] updateCounts = insertStatement.executeBatch();
@@ -59,6 +60,7 @@ public class MarkDAO extends DAO {
             record.setBadMark(resultSetOfRecord.getDouble("bad"));
             record.setExpertId(resultSetOfRecord.getInt("expertId"));
             record.setMetricId(resultSetOfRecord.getInt("metricID"));
+            record.setWeight(resultSetOfRecord.getDouble("weight"));
             listOfRecord.add(record);
         }
         connection.setAutoCommit(true);
@@ -91,7 +93,7 @@ public class MarkDAO extends DAO {
             statement.executeUpdate("DROP TABLE IF EXISTS marks;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS marks (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
                     + "excelent DOUBLE, good DOUBLE, bad DOUBLE,"
-                    + "expertId INT, metricID INT);");
+                    + "expertId INT, metricID INT, weight DOUBLE);");
             return true;
         } catch (SQLException e) {
             return false;

@@ -62,6 +62,12 @@ public class MetricsMarkRangeTest {
         assertEquals(4d,metricsMarkRange.getMedianForExcellentMarks("NORM"));
         assertEquals(12d,metricsMarkRange.getMedianForExcellentMarks("NRM"));
     }
+
+    @Test
+    public void testGetMedianForWeights() throws Exception {
+        assertEquals(0.8d,metricsMarkRange.getMedianForWeight("NORM"));
+        assertEquals(0.7d,metricsMarkRange.getMedianForWeight("NRM"));
+    }
     @After
     public void tearDown(){
         markDAO.clearTable();

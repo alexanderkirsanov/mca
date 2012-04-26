@@ -22,6 +22,7 @@ public class MarkEntity {
         this.badMark = badMark;
         this.metricId = metricId;
         this.expertId = expertId;
+        this.weight = weight;
     }
 
     public double getExcelentMark() {

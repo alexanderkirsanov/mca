@@ -43,14 +43,28 @@ public class PerMethodMetricReader implements IMetricReader {
                         String className = element.getAttributes().getNamedItem("source").getNodeValue();
                         className = className.substring(0, className.length() - 5);
                         metricsForMethod.put(className + "." + methodName, value);
-                        Double resultForClass = (metricsForType.get(className) + value) / 2;
+                        Double res = (metricsForType.get(className) == null) ? 0 : metricsForType.get(className);
+                        Double resultForClass = (res + value) / 2;
                         metricsForType.put(className, resultForClass);
                         String packageName = element.getAttributes().getNamedItem("package").getNodeValue();
-                        Double result = (metricsForPackage.get(packageName) + value) / 2;
+                        Double resForP = (metricsForPackage.get(packageName) == null) ? 0 : metricsForPackage.get(packageName);
+                        Double result = (resForP + value) / 2;
                         metricsForPackage.put(packageName, result);
                     }
                 }
             }
         }
+    }
+
+    public Map<String, Double> getMetricsForMethod() {
+        return metricsForMethod;
+    }
+
+    public Map<String, Double> getMetricsForType() {
+        return metricsForType;
+    }
+
+    public Map<String, Double> getMetricsForPackage() {
+        return metricsForPackage;
     }
 }

@@ -18,6 +18,7 @@ public class Statement {
         this.variable = variable;
     }
 
+
     public FuzzySet getTerm() {
         return this.term;
     }

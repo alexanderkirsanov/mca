@@ -12,9 +12,10 @@ import java.util.Map;
  */
 public class PerTypeMetricReader implements IMetricReader {
     private NodeList nodeList;
-    private Map<String, Double> metricsForType = new HashMap<String, Double>();
-    private Map<String, Double> metricsForPackage = new HashMap<String, Double>();
 
+    private Map<String, Double> metricsForType = new HashMap<String, Double>();
+
+    private Map<String, Double> metricsForPackage = new HashMap<String, Double>();
 
     private String name;
 
@@ -37,16 +38,31 @@ public class PerTypeMetricReader implements IMetricReader {
                 for (int z = 0; z < valueArray.getLength(); z++) {
                     Node element = valueArray.item(z);
                     if (element.getNodeName().equals("Value")) {
-                        Double value = Double.parseDouble(element.getAttributes().getNamedItem("value").getNodeValue());
+                        Double value = Double.parseDouble(element.getAttributes().getNamedItem("value").getNodeValue().replace(",", "."));
                         metricsForType.put(element.getAttributes().getNamedItem("name").getNodeValue(), value);
                         String packageName = element.getAttributes().getNamedItem("package").getNodeValue();
                         Double oldResult = metricsForPackage.get(packageName);
                         if (oldResult == null) oldResult = 0d;
-                        double result = ( oldResult + value) / 2;
+                        double result = (oldResult + value) / 2;
                         metricsForPackage.put(packageName, result);
                     }
                 }
             }
         }
     }
+
+    @Override
+    public Map<String, Double> getMetricsForMethod() {
+        return new HashMap<String, Double>();
+
+    }
+
+    public Map<String, Double> getMetricsForPackage() {
+        return metricsForPackage;
+    }
+
+    public Map<String, Double> getMetricsForType() {
+        return metricsForType;
+    }
+
 }

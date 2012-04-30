@@ -36,12 +36,26 @@ public class PerPackageMetricReader implements IMetricReader {
                 for (int z = 0; z < valueArray.getLength(); z++) {
                     Node element = valueArray.item(z);
                     if (element.getNodeName().equals("Value")) {
-                        Double result = Double.parseDouble(element.getAttributes().getNamedItem("value").getNodeValue());
+                        Double result = Double.parseDouble(element.getAttributes().getNamedItem("value").getNodeValue().replace(",","."));
                         String packageName = element.getAttributes().getNamedItem("name").getNodeValue();
                         metricsForPackage.put(packageName, result);
                     }
                 }
             }
         }
+    }
+
+    @Override
+    public Map<String, Double> getMetricsForMethod() {
+        return new HashMap<String, Double>();
+    }
+
+    @Override
+    public Map<String, Double> getMetricsForType() {
+        return new HashMap<String, Double>();
+    }
+
+    public Map<String, Double> getMetricsForPackage() {
+        return metricsForPackage;
     }
 }

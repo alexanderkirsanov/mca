@@ -20,4 +20,12 @@ public class FuzzySet implements IFuzzySet {
         if (val >= this.max) return 1;
         return (val - this.min) / (this.max - this.min);
     }
+
+    public double getMax() {
+        return max;
+    }
+
+    public double getMin() {
+        return min;
+    }
 }

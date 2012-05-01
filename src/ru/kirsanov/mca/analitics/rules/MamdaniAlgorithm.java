@@ -4,6 +4,7 @@ import ru.kirsanov.mca.analitics.rules.entities.Conclusion;
 import ru.kirsanov.mca.analitics.rules.entities.Condition;
 import ru.kirsanov.mca.analitics.rules.fuzzyset.ActivatedFuzzySet;
 import ru.kirsanov.mca.analitics.rules.fuzzyset.FuzzySet;
+import ru.kirsanov.mca.analitics.rules.fuzzyset.UnionOfFuzzySets;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -59,6 +60,66 @@ public class MamdaniAlgorithm {
         }
         return activatedFuzzySets;
     }
+
+    public List<UnionOfFuzzySets> accumulation(String metric, List<ActivatedFuzzySet> activatedFuzzySets) {
+        List<UnionOfFuzzySets> unionsOfFuzzySets =
+                new ArrayList<UnionOfFuzzySets>(activatedFuzzySets.size());
+
+
+        Rule rule = rulesGenerator.getRule(metric);
+        if (rule == null || rule.getConditions() == null || rule.getConditions().size() == 0)
+            return new ArrayList<UnionOfFuzzySets>();
+        int i = 0;
+        for (Conclusion conclusion : rule.getConclusions()) {
+            unionsOfFuzzySets.add(new UnionOfFuzzySets());
+            unionsOfFuzzySets.get(i).addFuzzySet(activatedFuzzySets.get(i));
+            i++;
+        }
+        return unionsOfFuzzySets;
+    }
+
+    public double[] defuzzification(String metricName, List<UnionOfFuzzySets> unionsOfFuzzySets, Collection<Double> list) {
+        double[] y = new double[unionsOfFuzzySets.size()];
+
+        double averageValue = avg(list);
+        for (int i = 0; i < unionsOfFuzzySets.size(); i++) {
+            double i1 = integral(unionsOfFuzzySets.get(i), averageValue, true);
+            double i2 = integral(unionsOfFuzzySets.get(i), averageValue, false);
+            y[i] = i1 / i2;
+            if (Double.isNaN(y[i])) y[i] = 0;
+        }
+        return y;
+    }
+
+    private double integral(UnionOfFuzzySets unionOfFuzzySets, double number, boolean b) {
+        if (b)
+            return Math.pow(unionOfFuzzySets.getValue(number), 2);
+        else
+            return unionOfFuzzySets.getValue(number);
+
+    }
+
+
+    private double sum(double start, double stop,
+                       double stepSize,
+                       Evaluatable evalObj) {
+        double sum = 0.0, current = start;
+        while (current <= stop) {
+            sum += evalObj.evaluate(current);
+            current += stepSize;
+        }
+        return (sum);
+    }
+
+
+    public double integrate(double start, double stop,
+                            int numSteps,
+                            Evaluatable evalObj) {
+        double stepSize = (stop - start) / (double) numSteps;
+        double newStart = start + stepSize / 2.0;
+        return (stepSize * sum(newStart, stop, stepSize, evalObj));
+    }
+
 
     private double avg(Collection<Double> list) {
         if (list.size() == 0)

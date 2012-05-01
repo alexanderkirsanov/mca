@@ -12,6 +12,8 @@ import ru.kirsanov.mca.other.dao.MetricEntity;
 
 import java.sql.SQLException;
 
+import static junit.framework.Assert.assertEquals;
+
 /**
  * User: akirsanov
  * Date: 30.04.12 23:58
@@ -33,9 +35,9 @@ public class MamdaniAlgorithmTest {
         MarkEntity markEntity = new MarkEntity(1d, 0.52d, 0d, normMetricEntity.getId(), 1, 1d);
         MarkEntity markEntity2 = new MarkEntity(2d, 0.25d, 0d, normMetricEntity.getId(), 2, 0.5d);
         MarkEntity markEntity3 = new MarkEntity(0.8d, 0.2d, 0.1d, normMetricEntity.getId(), 3, 0.8d);
-        MarkEntity nmarkEntity = new MarkEntity(12d, 6d, 1d, nrmMetricEntity.getId(), 1, 0.7d);
-        MarkEntity nmarkEntity2 = new MarkEntity(12d, 5d, 1d, nrmMetricEntity.getId(), 2, 0.5d);
-        MarkEntity nmarkEntity3 = new MarkEntity(1d, 3d, 1d, nrmMetricEntity.getId(), 3, 0.9d);
+        MarkEntity nmarkEntity = new MarkEntity(6d, 2d, 1d, nrmMetricEntity.getId(), 1, 0.7d);
+        MarkEntity nmarkEntity2 = new MarkEntity(6d, 2d, 1d, nrmMetricEntity.getId(), 2, 0.5d);
+        MarkEntity nmarkEntity3 = new MarkEntity(5d, 3d, 1d, nrmMetricEntity.getId(), 3, 0.9d);
         markDAO.insert(markEntity);
         markDAO.insert(markEntity2);
         markDAO.insert(markEntity3);
@@ -49,11 +51,13 @@ public class MamdaniAlgorithmTest {
     @Test
     public void testFuzzification() throws Exception {
         AnalyticsManager analyticsManager = new AnalyticsManager("C:\\Users\\akirsanov\\workspace\\test\\metrics.xml");
+        assertEquals(20, analyticsManager.getResult().size());
+        System.out.println(analyticsManager.getProjectState());
 
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         markDAO.clearTable();
         metricDAO.clearTable();
     }
